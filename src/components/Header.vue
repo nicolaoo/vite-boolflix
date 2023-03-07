@@ -22,7 +22,7 @@ export default {
                 <div>
                     <div>
                         <button class="search-btn"><i class="fa-solid fa-magnifying-glass"></i></button>
-                        <input type="text" class="input-bar" placeholder="Inserisci il film">
+                        <input v-model="store.query" type="text" class="input-bar" placeholder="Inserisci il film">
                     </div>
                 </div>
             </div>
