@@ -22,16 +22,38 @@ export default {
                     }
                 })
                 .then((res) => {
-                    console.log(res.data)
-                    console.log(res.data.results)
-                    console.log(res.data.results[0].title)
-                    console.log(res.data.results[1].original_title)
-                    console.log(res.data.results[2].original_language)
-                    console.log(res.data.results[4].vote_average)
+                    // console.log(res.data)
+                    // console.log(res.data.results)
+                    // console.log(res.data.results[0].title)
+                    // console.log(res.data.results[1].original_title)
+                    // console.log(res.data.results[2].original_language)
+                    // console.log(res.data.results[4].vote_average)
 
                     this.store.arrayFilm = res.data.results
 
                 })
+        },
+        fetchTv() {
+            const keyApi = this.store.keyApi
+            const query = this.store.query
+
+            axios
+                .get('https://api.themoviedb.org/3/search/tv', {
+                    params: {
+                        api_key: keyApi,
+                        query
+                    }
+                })
+                .then((res) => {
+                    console.log(res.data.results)
+
+                    this.store.arrayTv = res.data.results
+                })
+
+        },
+        searchTvFilm() {
+            this.fetchFilm()
+            this.fetchTv()
         }
     }
 }
@@ -46,8 +68,9 @@ export default {
                 </figure>
                 <div>
                     <div>
-                        <button @click="fetchFilm" class="search-btn"><i class="fa-solid fa-magnifying-glass"></i></button>
-                        <input @keyup.enter="fetchFilm" v-model="store.query" type="text" class="input-bar"
+                        <button @click="searchTvFilm" class="search-btn"><i
+                                class="fa-solid fa-magnifying-glass"></i></button>
+                        <input @keyup.enter="searchTvFilm" v-model="store.query" type="text" class="input-bar"
                             placeholder="Inserisci il film">
                     </div>
                 </div>

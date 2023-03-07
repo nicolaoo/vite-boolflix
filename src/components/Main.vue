@@ -38,6 +38,29 @@ export default {
                         </li>
                     </ul>
                 </div>
+                <div v-for="(element, i) in store.arrayTv" :key="i" class="card">
+                    <figure>
+                        <img src="https://picsum.photos/200/300" alt="">
+                    </figure>
+                    <ul class="fetch-film">
+                        <li>
+                            <h4>title</h4>
+                            {{ element.name }}
+                        </li>
+                        <li>
+                            <h4>original_title</h4>
+                            {{ element.original_name }}
+                        </li>
+                        <li>
+                            <h4>original_language</h4>
+                            {{ element.original_language }}
+                        </li>
+                        <li>
+                            <h4>vote_average</h4>
+                            {{ element.vote_average }}
+                        </li>
+                    </ul>
+                </div>
             </div>
         </div>
     </div>
