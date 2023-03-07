@@ -29,6 +29,7 @@ export default {
                     console.log(res.data.results[2].original_language)
                     console.log(res.data.results[4].vote_average)
 
+                    this.store.arrayFilm = res.data.results
 
                 })
         }

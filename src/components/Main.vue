@@ -15,15 +15,27 @@ export default {
     <div class="main">
         <div class="container">
             <div class="grid">
-                <div class="card">
+                <div v-for="(element, i) in store.arrayFilm" :key="i" class="card">
                     <figure>
                         <img src="https://picsum.photos/200/300" alt="">
                     </figure>
-                    <ul>
-                        <li>Titolo</li>
-                        <li>Titolo Originale</li>
-                        <li>Lingua</li>
-                        <li>Voto</li>
+                    <ul class="fetch-film">
+                        <li>
+                            <h4>title</h4>
+                            {{ element.title }}
+                        </li>
+                        <li>
+                            <h4>original_title</h4>
+                            {{ element.original_title }}
+                        </li>
+                        <li>
+                            <h4>original_language</h4>
+                            {{ element.original_language }}
+                        </li>
+                        <li>
+                            <h4>vote_average</h4>
+                            {{ element.vote_average }}
+                        </li>
                     </ul>
                 </div>
             </div>
@@ -36,5 +48,13 @@ export default {
     display: grid;
     grid-template-columns: repeat(6, 1fr);
     gap: 15px;
+}
+
+.fetch-film {
+    background-color: darkolivegreen;
+
+    li {
+        padding: 2px;
+    }
 }
 </style>
