@@ -5,6 +5,7 @@ const store = reactive({
     query: '',
     arrayFilm: [],
     arrayTv: [],
+
 })
 
 export default store

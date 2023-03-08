@@ -5,9 +5,9 @@ import store from '../store'
 export default {
     data() {
         return {
-            store
+            store,
         }
-    }
+    },
 }
 </script>
 
@@ -17,7 +17,7 @@ export default {
             <div class="grid">
                 <div v-for="(element, i) in store.arrayFilm" :key="i" class="card">
                     <figure>
-                        <img src="https://picsum.photos/200/300" alt="">
+                        <img :src="'https://image.tmdb.org/t/p/original' + element.backdrop_path" alt="">
                     </figure>
                     <ul class="fetch-film">
                         <li>
@@ -30,7 +30,15 @@ export default {
                         </li>
                         <li>
                             <h4>original_language</h4>
-                            {{ element.original_language }}
+                            <figure v-if="element.original_language = 'ita'">
+                                <img src="/italy_flags.ico" alt="">
+                            </figure>
+                            <figure v-else-if="element.original_language = 'en'">
+                                <img src="/united_states_flags.png" alt="">
+                            </figure>
+                            <figure v-else-if="element.original_language = 'ko'">
+                                <img src="/japan_flags.ico" alt="">
+                            </figure>
                         </li>
                         <li>
                             <h4>vote_average</h4>
@@ -44,19 +52,19 @@ export default {
                     </figure>
                     <ul class="fetch-film">
                         <li>
-                            <h4>title</h4>
+                            <h4>title-TV</h4>
                             {{ element.name }}
                         </li>
                         <li>
-                            <h4>original_title</h4>
+                            <h4>original_title-TV</h4>
                             {{ element.original_name }}
                         </li>
                         <li>
-                            <h4>original_language</h4>
+                            <h4>original_language-TV</h4>
                             {{ element.original_language }}
                         </li>
                         <li>
-                            <h4>vote_average</h4>
+                            <h4>vote_average-TV</h4>
                             {{ element.vote_average }}
                         </li>
                     </ul>
@@ -69,7 +77,7 @@ export default {
 <style lang="scss" scoped>
 .grid {
     display: grid;
-    grid-template-columns: repeat(6, 1fr);
+    grid-template-columns: repeat(4, 1fr);
     gap: 15px;
 }
 
