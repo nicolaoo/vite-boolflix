@@ -17,7 +17,7 @@ export default {
             <div class="grid">
                 <div v-for="(element, i) in store.arrayFilm" :key="i" class="card">
                     <figure>
-                        <img :src="'https://image.tmdb.org/t/p/original' + element.backdrop_path" alt="">
+                        <img :src="'https://image.tmdb.org/t/p/w342' + element.poster_path" alt="">
                     </figure>
                     <ul class="fetch-film">
                         <li>
@@ -29,16 +29,12 @@ export default {
                             {{ element.original_title }}
                         </li>
                         <li>
-                            <h4>original_language</h4>
-                            <figure v-if="element.original_language = 'ita'">
-                                <img src="/italy_flags.ico" alt="">
-                            </figure>
-                            <figure v-else-if="element.original_language = 'en'">
-                                <img src="/united_states_flags.png" alt="">
-                            </figure>
-                            <figure v-else-if="element.original_language = 'ko'">
-                                <img src="/japan_flags.ico" alt="">
-                            </figure>
+                            <h4>original_language-TV</h4>
+                            <img v-if="store.IconFlags[element.original_language]"
+                                :src="store.IconFlags[element.original_language]">
+                            <p v-else>
+                                {{ element.original_language }}
+                            </p>
                         </li>
                         <li>
                             <h4>vote_average</h4>
@@ -48,7 +44,7 @@ export default {
                 </div>
                 <div v-for="(element, i) in store.arrayTv" :key="i" class="card">
                     <figure>
-                        <img src="https://picsum.photos/200/300" alt="">
+                        <img :src="'https://image.tmdb.org/t/p/w342' + element.poster_path" alt="">
                     </figure>
                     <ul class="fetch-film">
                         <li>
@@ -61,7 +57,11 @@ export default {
                         </li>
                         <li>
                             <h4>original_language-TV</h4>
-                            {{ element.original_language }}
+                            <img v-if="store.IconFlags[element.original_language]"
+                                :src="store.IconFlags[element.original_language]">
+                            <p v-else>
+                                {{ element.original_language }}
+                            </p>
                         </li>
                         <li>
                             <h4>vote_average-TV</h4>
