@@ -20,7 +20,7 @@ export default {
         <div class="container">
             <div class="grid">
                 <div v-for="(element, i) in store.arrayFilm" :key="i" class="card">
-                    <figure>
+                    <figure class="imgflix">
                         <img v-if="element.poster_path" :src="'https://image.tmdb.org/t/p/w342' + element.poster_path"
                             alt="">
                         <img v-else height="302"
@@ -53,7 +53,7 @@ export default {
                     </ul>
                 </div>
                 <div v-for="(element, i) in store.arrayTv" :key="i" class="card">
-                    <figure>
+                    <figure class="imgflix">
                         <img v-if="element.poster_path" :src="'https://image.tmdb.org/t/p/w342' + element.poster_path"
                             alt="">
                         <img v-else height="302"
@@ -98,11 +98,27 @@ export default {
 }
 
 .fetch-film {
-    background-color: darkolivegreen;
+    position: absolute;
+    top: 0px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    text-align: center;
+    opacity: 0;
+
+    &:hover {
+        opacity: 0.9;
+        background-color: rgb(255, 255, 255, 0.5);
+    }
 
     li {
         padding: 2px;
     }
+}
+
+.card {
+    position: relative;
+
 }
 
 .yellow-star {
