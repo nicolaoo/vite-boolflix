@@ -29,11 +29,11 @@ export default {
                     </figure>
                     <ul class="fetch-film">
                         <li>
-                            <h3>Title</h3>
+                            <h2>Title</h2>
                             {{ element.title }}
                         </li>
                         <li>
-                            <h4>Original_title</h4>
+                            <h3>Original_title</h3>
                             {{ element.original_title }}
                         </li>
                         <li>
@@ -47,8 +47,11 @@ export default {
                         <li>
                             <h4>vote_average</h4>
                             <span v-for="n in 5" :class="{ 'yellow-star': n <= arrotondaNumeri(element.vote_average) }">
-                                <i class="fa-regular fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
                             </span>
+                        </li>
+                        <li>
+                            <p>{{ element.overview }}</p>
                         </li>
                     </ul>
                 </div>
@@ -62,11 +65,16 @@ export default {
                     </figure>
                     <ul class="fetch-film">
                         <li>
-                            <h4>title-TV</h4>
-                            {{ element.name }}
+                            <h2>
+                                Title-TV
+                            </h2>
+                            <p>
+                                {{ element.name }}
+                            </p>
+
                         </li>
                         <li>
-                            <h4>original_title-TV</h4>
+                            <h3>original_title-TV</h3>
                             {{ element.original_name }}
                         </li>
                         <li>
@@ -80,8 +88,11 @@ export default {
                         <li>
                             <h4>vote_average</h4>
                             <span v-for="n in 5" :class="{ 'yellow-star': n <= arrotondaNumeri(element.vote_average) }">
-                                <i class="fa-regular fa-star"></i>
+                                <i class=" fa-solid fa-star"></i>
                             </span>
+                        </li>
+                        <li>
+                            <p>{{ element.overview }}</p>
                         </li>
                     </ul>
                 </div>
@@ -108,11 +119,12 @@ export default {
 
     &:hover {
         opacity: 0.9;
-        background-color: rgb(255, 255, 255, 0.5);
+        background-color: rgb(255, 255, 255, 0.8);
     }
 
     li {
         padding: 2px;
+
     }
 }
 
