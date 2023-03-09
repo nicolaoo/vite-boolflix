@@ -32,6 +32,11 @@ export default {
                     this.store.arrayFilm = res.data.results
 
                 })
+                .catch((error) => {
+                    console.log(error)
+                    this.store.arrayFilm = []
+
+                })
         },
         fetchTv() {
             const keyApi = this.store.keyApi
@@ -49,6 +54,11 @@ export default {
 
                     this.store.arrayTv = res.data.results
                 })
+                .catch((error) => {
+                    console.log(error)
+                    this.store.arrayTv = []
+
+                })
 
         },
         searchTvFilm() {
@@ -63,32 +73,82 @@ export default {
     <header>
         <div class="container">
             <div class="search_bar">
-                <figure class="logo">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/3/36/Netflix_logo_%282%29.svg" alt="">
-                </figure>
-                <div>
-                    <div>
-                        <button @click="searchTvFilm" class="search-btn"><i
-                                class="fa-solid fa-magnifying-glass"></i></button>
-                        <input @keyup.enter="searchTvFilm" v-model="store.query" type="text" class="input-bar"
-                            placeholder="Inserisci il film">
-                    </div>
+                <div class="navbar">
+                    <figure class="logo">
+                        <img src="https://www.lascimmiapensa.com/wp-content/uploads/2017/05/Netflix-Logo.png" alt="">
+                    </figure>
+                    <ul class="navbar-menu">
+                        <li class="active">Home</li>
+                        <li>Serie Tv</li>
+                        <li>Film</li>
+                        <li>Originali</li>
+                        <li>La mia lista</li>
+                    </ul>
+                </div>
+                <div class="search">
+                    <button @click="searchTvFilm" class="search-btn"><i class="fa-solid fa-magnifying-glass"></i></button>
+                    <input @keyup.enter="searchTvFilm" v-model="store.query" type="text" class="input-bar"
+                        placeholder="Inserisci il film">
+                    <button class="btn">
+                        <img src="https://blog.it.playstation.com/tachyon/sites/12/2022/06/c7ad90b8e7459ba44f6974a429783aee42275f1b.jpg?resize=1088%2C612&crop_strategy=smart&zoom=1"
+                            alt="">
+                    </button>
                 </div>
             </div>
         </div>
     </header>
 </template>
 
+
 <style lang="scss" scoped>
-.search_bar {
+.btn {
+    display: flex;
+    width: 40px;
+    height: 40px;
+    margin-left: 20px;
+
+    img {
+        object-fit: cover;
+        object-position: center;
+        aspect-ratio: 1/1;
+    }
+}
+
+.search {
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    padding: 20px 0;
+
+}
+
+.navbar-menu {
+    color: rgb(255, 255, 255, 0.5);
+    display: flex;
+    gap: 8px;
+
+    li:hover {
+        color: white;
+
+    }
+
+    .active {
+        color: white;
+
+    }
+}
+
+.search_bar {
+    display: flex;
+    padding: 10px 0;
+    align-items: center;
+
+    .navbar {
+        display: flex;
+        align-items: center;
+
+    }
 
     .logo {
         flex-basis: 20%;
-
     }
 
 }
@@ -108,4 +168,9 @@ export default {
     text-align: center;
     margin-right: 8px;
 }
+
+// .search-btn:hover+.input-bar {
+//     display: flex;
+
+// }
 </style>

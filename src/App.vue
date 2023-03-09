@@ -23,4 +23,8 @@ export default {
 
 <style lang="scss">
 @use './style/gneral.scss';
+
+body {
+  background-color: rgb(0, 0, 0);
+}
 </style>
