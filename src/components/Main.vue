@@ -7,7 +7,11 @@ export default {
         return {
             store,
         }
-    },
+    }, methods: {
+        arrotondaNumeri(num) {
+            return num / 2
+        }
+    }
 }
 </script>
 
@@ -17,19 +21,23 @@ export default {
             <div class="grid">
                 <div v-for="(element, i) in store.arrayFilm" :key="i" class="card">
                     <figure>
-                        <img :src="'https://image.tmdb.org/t/p/w342' + element.poster_path" alt="">
+                        <img v-if="element.poster_path" :src="'https://image.tmdb.org/t/p/w342' + element.poster_path"
+                            alt="">
+                        <img v-else height="302"
+                            src="https://st.depositphotos.com/2392933/3450/v/950/depositphotos_34505199-stock-illustration-cinema-symbols.jpg"
+                            alt="">
                     </figure>
                     <ul class="fetch-film">
                         <li>
-                            <h4>title</h4>
+                            <h3>Title</h3>
                             {{ element.title }}
                         </li>
                         <li>
-                            <h4>original_title</h4>
+                            <h4>Original_title</h4>
                             {{ element.original_title }}
                         </li>
                         <li>
-                            <h4>original_language-TV</h4>
+                            <h4>Original_language-TV</h4>
                             <img v-if="store.IconFlags[element.original_language]"
                                 :src="store.IconFlags[element.original_language]">
                             <p v-else>
@@ -38,13 +46,19 @@ export default {
                         </li>
                         <li>
                             <h4>vote_average</h4>
-                            {{ element.vote_average }}
+                            <span v-for="n in 5" :class="{ 'yellow-star': n <= arrotondaNumeri(element.vote_average) }">
+                                <i class="fa-regular fa-star"></i>
+                            </span>
                         </li>
                     </ul>
                 </div>
                 <div v-for="(element, i) in store.arrayTv" :key="i" class="card">
                     <figure>
-                        <img :src="'https://image.tmdb.org/t/p/w342' + element.poster_path" alt="">
+                        <img v-if="element.poster_path" :src="'https://image.tmdb.org/t/p/w342' + element.poster_path"
+                            alt="">
+                        <img v-else height="302"
+                            src="https://st.depositphotos.com/2392933/3450/v/950/depositphotos_34505199-stock-illustration-cinema-symbols.jpg"
+                            alt="">
                     </figure>
                     <ul class="fetch-film">
                         <li>
@@ -64,8 +78,10 @@ export default {
                             </p>
                         </li>
                         <li>
-                            <h4>vote_average-TV</h4>
-                            {{ element.vote_average }}
+                            <h4>vote_average</h4>
+                            <span v-for="n in 5" :class="{ 'yellow-star': n <= arrotondaNumeri(element.vote_average) }">
+                                <i class="fa-regular fa-star"></i>
+                            </span>
                         </li>
                     </ul>
                 </div>
@@ -87,5 +103,9 @@ export default {
     li {
         padding: 2px;
     }
+}
+
+.yellow-star {
+    color: yellow;
 }
 </style>

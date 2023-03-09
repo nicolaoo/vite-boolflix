@@ -15,7 +15,8 @@ const store = reactive({
         es: '/spain_flags.ico',
         de: '/germany_flags.png',
         cn: '/china_flags.png',
-    }
+    },
+
 })
 
 export default store
