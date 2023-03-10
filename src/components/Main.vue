@@ -1,16 +1,19 @@
 <script >
 import axios from 'axios'
 import store from '../store'
+import CardToFilm from './CardFilm.vue'
+import CardToTv from './CardTv.vue'
 
 export default {
     data() {
         return {
             store,
+
         }
-    }, methods: {
-        arrotondaNumeri(num) {
-            return num / 2
-        }
+    },
+    components: {
+        CardToTv,
+        CardToFilm,
     }
 }
 </script>
@@ -19,83 +22,8 @@ export default {
     <div class="main">
         <div class="container">
             <div class="grid">
-                <div v-for="(element, i) in store.arrayFilm" :key="i" class="card">
-                    <figure class="imgflix">
-                        <img v-if="element.poster_path" :src="'https://image.tmdb.org/t/p/w342' + element.poster_path"
-                            alt="">
-                        <img v-else height="302"
-                            src="https://st.depositphotos.com/2392933/3450/v/950/depositphotos_34505199-stock-illustration-cinema-symbols.jpg"
-                            alt="">
-                    </figure>
-                    <ul class="fetch-film">
-                        <li>
-                            <h2>Title</h2>
-                            {{ element.title }}
-                        </li>
-                        <li>
-                            <h3>Original_title</h3>
-                            {{ element.original_title }}
-                        </li>
-                        <li>
-                            <h4>Original_language-TV</h4>
-                            <img v-if="store.IconFlags[element.original_language]"
-                                :src="store.IconFlags[element.original_language]">
-                            <p v-else>
-                                {{ element.original_language }}
-                            </p>
-                        </li>
-                        <li>
-                            <h4>vote_average</h4>
-                            <span v-for="n in 5" :class="{ 'yellow-star': n <= arrotondaNumeri(element.vote_average) }">
-                                <i class="fa-solid fa-star"></i>
-                            </span>
-                        </li>
-                        <li>
-                            <p>{{ element.overview }}</p>
-                        </li>
-                    </ul>
-                </div>
-                <div v-for="(element, i) in store.arrayTv" :key="i" class="card">
-                    <figure class="imgflix">
-                        <img v-if="element.poster_path" :src="'https://image.tmdb.org/t/p/w342' + element.poster_path"
-                            alt="">
-                        <img v-else height="302"
-                            src="https://st.depositphotos.com/2392933/3450/v/950/depositphotos_34505199-stock-illustration-cinema-symbols.jpg"
-                            alt="">
-                    </figure>
-                    <ul class="fetch-film">
-                        <li>
-                            <h2>
-                                Title-TV
-                            </h2>
-                            <p>
-                                {{ element.name }}
-                            </p>
-
-                        </li>
-                        <li>
-                            <h3>original_title-TV</h3>
-                            {{ element.original_name }}
-                        </li>
-                        <li>
-                            <h4>original_language-TV</h4>
-                            <img v-if="store.IconFlags[element.original_language]"
-                                :src="store.IconFlags[element.original_language]">
-                            <p v-else>
-                                {{ element.original_language }}
-                            </p>
-                        </li>
-                        <li>
-                            <h4>vote_average</h4>
-                            <span v-for="n in 5" :class="{ 'yellow-star': n <= arrotondaNumeri(element.vote_average) }">
-                                <i class=" fa-solid fa-star"></i>
-                            </span>
-                        </li>
-                        <li>
-                            <p>{{ element.overview }}</p>
-                        </li>
-                    </ul>
-                </div>
+                <CardToFilm v-for="(element, i) in store.arrayFilm" :key="i" :film="element" />
+                <CardToTv v-for="(element, i) in store.arrayTv" :key="i" :tv="element" />
             </div>
         </div>
     </div>
@@ -106,34 +34,5 @@ export default {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 15px;
-}
-
-.fetch-film {
-    position: absolute;
-    top: 0px;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    text-align: center;
-    opacity: 0;
-
-    &:hover {
-        opacity: 0.9;
-        background-color: rgb(255, 255, 255, 0.8);
-    }
-
-    li {
-        padding: 2px;
-
-    }
-}
-
-.card {
-    position: relative;
-
-}
-
-.yellow-star {
-    color: yellow;
 }
 </style>

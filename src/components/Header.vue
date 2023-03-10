@@ -37,6 +37,7 @@ export default {
                     this.store.arrayFilm = []
 
                 })
+
         },
         fetchTv() {
             const keyApi = this.store.keyApi
@@ -64,6 +65,7 @@ export default {
         searchTvFilm() {
             this.fetchFilm()
             this.fetchTv()
+            this.store.query = ''
         }
     }
 }
