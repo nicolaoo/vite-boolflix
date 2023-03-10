@@ -24,12 +24,11 @@ export default {
 <template>
     <div class="card">
         <figure class="imgflix">
-            <img v-if="film.poster_path" :src="'https://image.tmdb.org/t/p/w342' + film.poster_path" alt="">
-            <img v-else height="302"
-                src="https://st.depositphotos.com/2392933/3450/v/950/depositphotos_34505199-stock-illustration-cinema-symbols.jpg"
+            <img class="posterImg" v-if="film.poster_path" :src="'https://image.tmdb.org/t/p/w342' + film.poster_path"
                 alt="">
+            <img class="posterImg" v-else src="https://hd2.tudocdn.net/516955?w=1000&fit=clip" alt="">
         </figure>
-        <ul class="data-film">
+        <ul class="fetch-film">
             <li>
                 <h2>Title</h2>
                 {{ film.title }}
@@ -59,8 +58,15 @@ export default {
 </template>
 
 
+
 <style lang="scss" scoped>
-.data-film {
+.posterImg {
+    aspect-ratio: 7/9;
+    object-fit: cover;
+    object-position: center;
+}
+
+.fetch-film {
     position: absolute;
     top: 0px;
     left: 0;
