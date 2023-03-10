@@ -8,7 +8,7 @@ export default {
         }
     }, methods: {
         arrotondaNumeri(num) {
-            return num / 2
+            return Math.round(num / 2)
         }
     },
     props: {
@@ -29,7 +29,7 @@ export default {
                 src="https://st.depositphotos.com/2392933/3450/v/950/depositphotos_34505199-stock-illustration-cinema-symbols.jpg"
                 alt="">
         </figure>
-        <ul class="fetch-film">
+        <ul class="data-film">
             <li>
                 <h2>Title</h2>
                 {{ film.title }}
@@ -60,7 +60,7 @@ export default {
 
 
 <style lang="scss" scoped>
-.fetch-film {
+.data-film {
     position: absolute;
     top: 0px;
     left: 0;

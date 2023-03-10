@@ -29,6 +29,7 @@ export default {
             </div>
             <div v-else class="error">
                 {{ store.query }} non è stato trovato!!!!
+
             </div>
         </div>
     </div>
@@ -41,6 +42,7 @@ export default {
     display: flex;
     justify-content: center;
     align-items: start;
+
 }
 
 .grid {

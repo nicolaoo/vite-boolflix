@@ -2,6 +2,7 @@ import { reactive } from "vue";
 
 const store = reactive({
     keyApi: '835c66cc5b8e53712c49931e6484eca1',
+    speak: 'language=it_IT',
     query: '',
     arrayFilm: [],
     arrayTv: [],

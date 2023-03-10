@@ -42,11 +42,13 @@ export default {
         fetchTv() {
             const keyApi = this.store.keyApi
             const query = this.store.query
+            const language = this.store.speak
 
             axios
                 .get('https://api.themoviedb.org/3/search/tv', {
                     params: {
                         api_key: keyApi,
+                        language,
                         query
                     }
                 })
