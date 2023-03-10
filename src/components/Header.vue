@@ -54,6 +54,7 @@ export default {
                     console.log(res.data.results)
 
                     this.store.arrayTv = res.data.results
+
                 })
                 .catch((error) => {
                     console.log(error)
@@ -65,7 +66,7 @@ export default {
         searchTvFilm() {
             this.fetchFilm()
             this.fetchTv()
-            this.store.query = ''
+
         }
     }
 }
